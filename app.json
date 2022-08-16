@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "routino-app",
+    "slug": "routino-app",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
