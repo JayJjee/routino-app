@@ -13,19 +13,19 @@ import {
     HandleButtonMessage
 } from "./styles";
 import SignInput from "../../components/SignInput";
+import HeaderSign from "../../components/HeaderSign";
 import { LinearGradient } from "expo-linear-gradient";
 import MaskedView from '@react-native-masked-view/masked-view';
 import { useNavigation } from "@react-navigation/native";
 import { auth, db } from "../../../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { collection, addDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 
 export default () => {
     const navigation = useNavigation();
     const [email, setEmailField] = useState('');
     const [password, setPasswordField] = useState('');
     const [name, setName] = useState('');
-
 
     const handleSignUpClick = () => {
         createUserWithEmailAndPassword(auth, email, password)
@@ -40,15 +40,19 @@ export default () => {
 
     const createColection = async (name) => {
         try {
+            const currentDateTime = new Date().toISOString()
             const data = {
                 "id": auth.currentUser?.uid,
                 "email": auth.currentUser?.email,
                 "nome": name,
+                "createdAt": currentDateTime,
+                "updatedAt": currentDateTime,
+                "activate": true
             }
 
-            const docRef = await addDoc(collection(db, "users"), data);
-                    
-            console.log("Document written with ID: ", docRef.id);
+            const docRef = await setDoc(doc(db, "users", data.id), data);
+
+            console.log("Document written with ID: ", data.id);
         } catch (err) {
             console.error("Error adding document: ", err);
         }
@@ -62,20 +66,7 @@ export default () => {
     return (
         <Container>
 
-            <HeaderArea>
-                <LinearGradient
-                    start={{ x: 0, y: 0 }}
-                    end={{ x: 1, y: 1 }}
-                    colors={['#2CAD58', '#742CAD', '#FF0909']}
-                    style={{
-                        height: 15,
-                        width: 350,
-                        marginTop: 55,
-                        borderRadius: 20,
-                    }}
-                >
-                </LinearGradient>
-            </HeaderArea>
+            <HeaderSign></HeaderSign>
             <ScrollViewSignUp>
                 <ViewArea>
                     <MaskedView maskElement={<TitleProps>ROUTINO</TitleProps>}>
@@ -112,7 +103,7 @@ export default () => {
                         password={true}
                     />
                     <HandleButton onPress={() => handleSignUpClick()}>
-                        <HandleButtonText>Entrar</HandleButtonText>
+                        <HandleButtonText>Concluir cadastro</HandleButtonText>
                     </HandleButton>
                     <HandleButtonMessage onPress={() => handleGoBack()}>
                         <HandleButtonText>Já possui uma conta?</HandleButtonText>

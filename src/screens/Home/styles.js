@@ -14,10 +14,13 @@ export const ViewArea = styled.View`
 `;
 
 export const HeaderArea = styled.View`
+    /* flex: 1; */
     height: 100px;
     width: 100%;
     background-color: #fff;
-    align-items: center;
+    justify-content: center;
+    border-color: black;
+    border-width: 0.2px;
       
 `
 
@@ -44,17 +47,17 @@ export const ImageProfile = styled.Image`
 `;
 
 export const Title = styled.Text`
-    font-size: 20px;
-    margin: 20px;
-    text-align: center;
+    font-size: 40px;
+    margin-top: 10px;
+    margin-left: 20px;
     font-weight: bold;
-
+    /* opacity: 0; */
 `;
 
 export const TitleProps = styled.Text`
     font-size: 40px;
-    margin: 20px;
-    text-align: center;
+    margin-left: 20px;
+    margin-top: 10px;
     font-weight: bold;
     background-color: transparent;
 `;

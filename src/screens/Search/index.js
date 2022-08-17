@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Container, ViewArea, HeaderArea, ImageProfile, Title, TitleProps, HandleButton, HandleButtonText } from "./styles";
+import { LinearGradient } from "expo-linear-gradient";
+import MaskedView from '@react-native-masked-view/masked-view';
 import { useNavigation } from "@react-navigation/native";
 import { auth } from "../../../firebase";
 import Header from "../../components/HeaderRoutino";
@@ -17,14 +19,14 @@ export default () => {
             })
             .catch(error => alert(error.message))
     }
-    console.log("To no home");
+
     return (
         <Container>
             <Header></Header>
 
             <ViewArea>
                 <Title>Email: {auth.currentUser?.email}</Title>
-                <Title>Home</Title>
+                <Title>Search</Title>
                 <HandleButton onPress={() => handleSignOut()}>
                     <HandleButtonText>Sign Out</HandleButtonText>
                 </HandleButton>

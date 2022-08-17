@@ -14,18 +14,15 @@ export const ViewArea = styled.View`
 `;
 
 export const HeaderArea = styled.View`
+    /* flex: 1; */
     height: 100px;
     width: 100%;
     background-color: #fff;
-    align-items: center;
+    justify-content: center;
+    border-color: black;
+    border-width: 0.2px;
       
-`;
-
-export const ScrollViewSignUp = styled.ScrollView`
-    width: 100%;
-    height: 100%;
-    flex: 1;
-`;
+`
 
 export const HandleButton = styled.TouchableOpacity`
     background-color: #8C8C8C;
@@ -37,45 +34,23 @@ export const HandleButton = styled.TouchableOpacity`
     justify-content: center;
 `;
 
-export const HandleButtonMessage = styled.TouchableOpacity`
-    flex-direction: row;
-    justify-content: center;
-
-    margin-bottom: 20px;
-`;
-
 export const HandleButtonText = styled.Text`
     font-size: 16px;
     text-align: center;
 `;
 
-export const HandleButtonTextBold = styled.Text`
-    font-size: 16px;
-    text-align: center;
-    font-weight: bold;
-`;
-
 export const ImageProfile = styled.Image`
-    width: 130px;
-    height: 130px;
+    width: 280px;
+    height: 280px;
     border-radius: 200px;
     margin-bottom: 40px;
 `;
 
 export const Title = styled.Text`
     font-size: 40px;
-    margin: 20px;
-    text-align: center;
+    margin-top: 10px;
+    margin-left: 20px;
     font-weight: bold;
-    opacity: 0;
-`;
-
-export const TitleProps = styled.Text`
-    font-size: 40px;
-    margin: 20px;
-    text-align: center;
-    font-weight: bold;
-    background-color: transparent;
 `;
 
 

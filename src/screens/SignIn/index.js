@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Container, ViewArea, HeaderArea, ImageProfile, Title, TitleProps, HandleButton, HandleButtonText } from "./styles";
 import SignInput from "../../components/SignInput";
+import HeaderSign from "../../components/HeaderSign";
 import { LinearGradient } from "expo-linear-gradient";
 import MaskedView from '@react-native-masked-view/masked-view';
 import { useNavigation } from "@react-navigation/native";
@@ -34,7 +35,7 @@ export default () => {
                 const uid = user.email
                 console.log(uid)
                 navigation.reset({
-                    routes: [{ name: 'Home' }]
+                    routes: [{ name: 'MainTab' }]
                 });
             }
         })
@@ -44,21 +45,7 @@ export default () => {
 
     return (
         <Container>
-
-            <HeaderArea>
-                <LinearGradient
-                    start={{ x: 0, y: 0 }}
-                    end={{ x: 1, y: 1 }}
-                    colors={['#2CAD58', '#742CAD', '#FF0909']}
-                    style={{
-                        height: 15,
-                        width: 350,
-                        marginTop: 55,
-                        borderRadius: 20,
-                    }}
-                >
-                </LinearGradient>
-            </HeaderArea>
+            <HeaderSign></HeaderSign>
 
             <ViewArea>
                 <MaskedView maskElement={<TitleProps>ROUTINO</TitleProps>}>
