@@ -2,3 +2,9 @@
 const { getDefaultConfig } = require('expo/metro-config');
 
 module.exports = getDefaultConfig(__dirname);
+
+// config.resolver.assetExts.push("cjs");
+
+// module.exports = config;
+
+
