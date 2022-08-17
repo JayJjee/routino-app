@@ -44,11 +44,11 @@ export const ImageProfile = styled.Image`
 `;
 
 export const Title = styled.Text`
-    font-size: 40px;
+    font-size: 20px;
     margin: 20px;
     text-align: center;
     font-weight: bold;
-    opacity: 0;
+
 `;
 
 export const TitleProps = styled.Text`

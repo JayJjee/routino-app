@@ -1,10 +1,7 @@
-// Learn more https://docs.expo.io/guides/customizing-metro
-const { getDefaultConfig } = require('expo/metro-config');
+const { getDefaultConfig } = require("@expo/metro-config");
 
-module.exports = getDefaultConfig(__dirname);
+const defaultConfig = getDefaultConfig(__dirname);
 
-// config.resolver.assetExts.push("cjs");
+defaultConfig.resolver.assetExts.push("cjs");
 
-// module.exports = config;
-
-
+module.exports = defaultConfig;

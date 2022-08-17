@@ -19,7 +19,13 @@ export const HeaderArea = styled.View`
     background-color: #fff;
     align-items: center;
       
-`
+`;
+
+export const ScrollViewSignUp = styled.ScrollView`
+    width: 100%;
+    height: 100%;
+    flex: 1;
+`;
 
 export const HandleButton = styled.TouchableOpacity`
     background-color: #8C8C8C;
@@ -31,14 +37,27 @@ export const HandleButton = styled.TouchableOpacity`
     justify-content: center;
 `;
 
+export const HandleButtonMessage = styled.TouchableOpacity`
+    flex-direction: row;
+    justify-content: center;
+
+    margin-bottom: 20px;
+`;
+
 export const HandleButtonText = styled.Text`
     font-size: 16px;
     text-align: center;
 `;
 
+export const HandleButtonTextBold = styled.Text`
+    font-size: 16px;
+    text-align: center;
+    font-weight: bold;
+`;
+
 export const ImageProfile = styled.Image`
-    width: 280px;
-    height: 280px;
+    width: 130px;
+    height: 130px;
     border-radius: 200px;
     margin-bottom: 40px;
 `;
