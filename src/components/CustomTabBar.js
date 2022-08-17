@@ -49,7 +49,7 @@ export default ({ state, navigation }) => {
                 <LargeImage style={{ opacity: state.index === 0 ? 1 : 0.5 }} source={require("../assets/profile.png")} />
             </TabLargeItem>
 
-            <TabSmallItem onPress={() => goTo("Home")}>
+            <TabSmallItem onPress={() => goTo("Settings")}>
                 <SmallImage style={{ opacity: state.index === 1 ? 1 : 0.5 }} source={require("../assets/gear.png")} />
             </TabSmallItem>
 

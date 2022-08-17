@@ -2,8 +2,9 @@ import React from "react";
 import styled from 'styled-components/native';
 import { LinearGradient } from "expo-linear-gradient";
 import MaskedView from '@react-native-masked-view/masked-view';
+import { useNavigation } from "@react-navigation/native";
 
-const HeaderArea = styled.View`
+const HeaderArea = styled.TouchableOpacity`
     /* flex: 1; */
     height: 100px;
     width: 100%;
@@ -32,9 +33,13 @@ const TitleProps = styled.Text`
 
 
 export default () => {
+    const navigation = useNavigation();
 
+    const handleHome = () => {
+        navigation.navigate("Home")
+    }
     return (
-        <HeaderArea>
+        <HeaderArea onPress={() => handleHome()}>
             <MaskedView maskElement={<TitleProps>ROUTINO</TitleProps>}>
                 <LinearGradient
                     start={{ x: 0, y: 0 }}

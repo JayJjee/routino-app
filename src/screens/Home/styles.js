@@ -48,11 +48,15 @@ export const ImageProfile = styled.Image`
 
 export const Title = styled.Text`
     font-size: 40px;
-    margin-top: 10px;
-    margin-left: 20px;
+    margin-top: 20px;
     font-weight: bold;
-    /* opacity: 0; */
 `;
+
+export const SimpleText = styled.Text`
+    font-size: 20px;
+    margin-top: 20px;
+`;
+
 
 export const TitleProps = styled.Text`
     font-size: 40px;

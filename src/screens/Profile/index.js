@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container, ViewArea, HeaderArea, ImageProfile, Title, TitleProps, HandleButton, HandleButtonText } from "./styles";
-import { LinearGradient } from "expo-linear-gradient";
-import MaskedView from '@react-native-masked-view/masked-view';
+import { Container, ViewArea, SimpleText, Title, HandleButton, HandleButtonText } from "./styles";
 import { useNavigation } from "@react-navigation/native";
 import { auth } from "../../../firebase";
 import Header from "../../components/HeaderRoutino";
@@ -25,7 +23,7 @@ export default () => {
             <Header></Header>
 
             <ViewArea>
-                <Title>Email: {auth.currentUser?.email}</Title>
+                <SimpleText>Email: {auth.currentUser?.email}</SimpleText>
                 <Title>Profile</Title>
                 <HandleButton onPress={() => handleSignOut()}>
                     <HandleButtonText>Sign Out</HandleButtonText>

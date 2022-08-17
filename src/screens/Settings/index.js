@@ -17,14 +17,13 @@ export default () => {
             })
             .catch(error => alert(error.message))
     }
-    console.log("To no home");
+
     return (
         <Container>
             <Header></Header>
 
             <ViewArea>
-                <SimpleText>Bem vindo ao início</SimpleText>
-                <Title>Home</Title>
+                <Title>Settings</Title>
                 <HandleButton onPress={() => handleSignOut()}>
                     <HandleButtonText>Sign Out</HandleButtonText>
                 </HandleButton>
