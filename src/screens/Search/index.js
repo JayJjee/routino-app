@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Container, ViewArea, SimpleText, Title, HandleButton, HandleButtonText } from "./styles";
-import { LinearGradient } from "expo-linear-gradient";
-import MaskedView from '@react-native-masked-view/masked-view';
+import { Container, ViewArea, Title, FlatList, HandleButtonText } from "./styles";
 import { useNavigation } from "@react-navigation/native";
 import { auth } from "../../../firebase";
 import Header from "../../components/HeaderRoutino";
+import SearchButton from "../../components/SearchButton";
+import Item from "./Item";
 
 export default () => {
+
+    // const [data, setData] = useState([]); 
 
     const navigation = useNavigation();
 
@@ -19,19 +21,28 @@ export default () => {
             })
             .catch(error => alert(error.message))
     }
-
+    
+    const data = "daniloas"
+    const renderItem = ({ item }) => <Item item={item} />;
+    const numColumns = 3
     return (
         <Container>
             <Header></Header>
-
+            <Title>Browse</Title>
             <ViewArea>
-                <SimpleText>Pesquise algo</SimpleText>
-                <Title>Search</Title>
-                <HandleButton onPress={() => handleSignOut()}>
+                <SearchButton onPress={() => handleSignOut()}>
                     <HandleButtonText>Sign Out</HandleButtonText>
-                </HandleButton>
-
+                </SearchButton>
             </ViewArea>
+            <FlatList
+                data={data}
+                renderItem={renderItem}
+                contentContainerStyle={{ justifyContent: "center" }}
+                numColumns={numColumns}
+
+            />
+
+
 
         </Container>
     );

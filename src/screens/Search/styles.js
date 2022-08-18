@@ -9,7 +9,9 @@ export const Container = styled.SafeAreaView`
 // VIEW
 
 export const ViewArea = styled.View`
-    flex: 1;
+    height: 70px;
+    padding-left: 20px;
+    padding-top: 5px;
     align-items: center;
 `;
 
@@ -26,17 +28,19 @@ export const HeaderArea = styled.View`
 
 export const HandleButton = styled.TouchableOpacity`
     background-color: #8C8C8C;
-    width: 40%;
+    width: 80%;
     height: 35px;
     border-radius: 30px;
     margin-bottom: 20px;
+    margin-top: 20px;
     align-items: center;
     justify-content: center;
 `;
 
-export const HandleButtonText = styled.Text`
-    font-size: 16px;
-    text-align: center;
+export const FlatList = styled.FlatList`
+    margin-bottom: 20px;
+    width: 100%;
+    height: 80%;
 `;
 
 export const ImageProfile = styled.Image`
@@ -46,10 +50,18 @@ export const ImageProfile = styled.Image`
     margin-bottom: 40px;
 `;
 
+// TEXT
+export const HandleButtonText = styled.Text`
+    font-size: 16px;
+    text-align: center;
+
+`;
+
 export const Title = styled.Text`
-    font-size: 40px;
-    margin-top: 20px;
+    font-size: 23px;
     font-weight: bold;
+    margin-left: 25px;
+    margin-top: 10px;
 `;
 
 export const SimpleText = styled.Text`

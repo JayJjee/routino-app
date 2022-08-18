@@ -11,6 +11,7 @@ export const Container = styled.SafeAreaView`
 export const ViewArea = styled.View`
     flex: 1;
     align-items: center;
+    justify-content: center;
 `;
 
 export const HeaderArea = styled.View`
@@ -25,25 +26,29 @@ export const HeaderArea = styled.View`
 `
 
 export const HandleButton = styled.TouchableOpacity`
-    background-color: #8C8C8C;
-    width: 40%;
-    height: 35px;
+    background-color: #fff;
+    width: 80%;
+    height: 60px;
     border-radius: 30px;
     margin-bottom: 20px;
     align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
     justify-content: center;
+    flex-direction: row;
 `;
 
 export const HandleButtonText = styled.Text`
-    font-size: 16px;
+    flex: 1;
+    font-size: 30px;
     text-align: center;
+    margin-right: 30px;
+    font-weight: bold;
 `;
 
-export const ImageProfile = styled.Image`
-    width: 280px;
-    height: 280px;
-    border-radius: 200px;
-    margin-bottom: 40px;
+export const Icon = styled.Image`
+    width: 35px;
+    height: 35px;
 `;
 
 export const Title = styled.Text`

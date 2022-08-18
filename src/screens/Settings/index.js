@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container, ViewArea, SimpleText, Title, HandleButton, HandleButtonText } from "./styles";
+import { Container, ViewArea, Icon, HandleButton, HandleButtonText } from "./styles";
 import { useNavigation } from "@react-navigation/native";
 import { auth } from "../../../firebase";
 import Header from "../../components/HeaderRoutino";
@@ -23,9 +23,24 @@ export default () => {
             <Header></Header>
 
             <ViewArea>
-                <Title>Settings</Title>
+                <HandleButton>
+                    <Icon source={require('../../assets/dark-mode.png')} />
+                    <HandleButtonText>Modo Escuro</HandleButtonText>
+                </HandleButton>
+
+                <HandleButton>
+                    <Icon source={require('../../assets/like.png')} />
+                    <HandleButtonText>FeedBack</HandleButtonText>
+                </HandleButton>
+
+                <HandleButton>
+                    <Icon source={require('../../assets/help.png')} />
+                    <HandleButtonText>Ajuda</HandleButtonText>
+                </HandleButton>
+
                 <HandleButton onPress={() => handleSignOut()}>
-                    <HandleButtonText>Sign Out</HandleButtonText>
+                    <Icon source={require('../../assets/logout.png')} />
+                    <HandleButtonText>Sair</HandleButtonText>
                 </HandleButton>
 
             </ViewArea>

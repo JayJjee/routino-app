@@ -9,25 +9,9 @@ const HeaderArea = styled.View`
     background-color: #fff;
     justify-content: center;
     align-items: center;
-    border-color: black;
-    border-width: 0.2px;
+    /* border-color: black;
+    border-width: 0.2px; */
       
-`
-
-export const Title = styled.Text`
-    font-size: 40px;
-    margin-top: 10px;
-    margin-left: 20px;
-    font-weight: bold;
-    opacity: 0;
-`;
-
-export const TitleProps = styled.Text`
-    font-size: 40px;
-    margin-left: 20px;
-    margin-top: 10px;
-    font-weight: bold;
-    background-color: transparent;
 `;
 
 export default () => {
@@ -41,7 +25,7 @@ export default () => {
                 style={{
                     height: 10,
                     width: 350,
-                    marginTop: 55,
+                    marginTop: 50,
                     borderRadius: 20,
                 }}
             >

@@ -8,26 +8,14 @@ export default () => {
 
     const navigation = useNavigation();
 
-    const handleSignOut = () => {
-        auth
-            .signOut()
-            .then(() => {
-                navigation.navigate("SignIn")
-                console.log('Deslogado');
-            })
-            .catch(error => alert(error.message))
-    }
-    console.log("To no home");
     return (
         <Container>
+            
             <Header></Header>
 
             <ViewArea>
                 <SimpleText>Bem vindo ao início</SimpleText>
                 <Title>Home</Title>
-                <HandleButton onPress={() => handleSignOut()}>
-                    <HandleButtonText>Sign Out</HandleButtonText>
-                </HandleButton>
 
             </ViewArea>
 
