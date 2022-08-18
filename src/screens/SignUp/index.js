@@ -33,7 +33,7 @@ export default () => {
                 const user = userCredentials.user;
                 console.log("Resgistrado com email: ", user.email);
                 createColection(name)
-                navigation.navigate("Home")
+                navigation.navigate("MainTab")
             })
             .catch(error => alert(error.message))
     }
@@ -80,7 +80,7 @@ export default () => {
                     </MaskedView>
 
 
-                    <ImageProfile source={{ uri: "https://cdn-icons.flaticon.com/png/512/4526/premium/4526288.png?token=exp=1660705138~hmac=c3748ab04f7bff6529537321632d0ca6" }} />
+                    <ImageProfile source={require("../../assets/profile.png")} />
                     <SignInput
                         placeholder="Digite seu nome"
                         value={name}
