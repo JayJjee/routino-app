@@ -37,7 +37,7 @@ export default () => {
             <FlatList
                 data={data}
                 renderItem={renderItem}
-                contentContainerStyle={{ justifyContent: "center" }}
+                contentContainerStyle={{ marginHorizontal: 10 }}
                 numColumns={numColumns}
 
             />

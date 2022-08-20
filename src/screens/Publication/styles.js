@@ -4,6 +4,7 @@ import styled from 'styled-components/native';
 export const Container = styled.SafeAreaView`
     background-color: #EAEAEA;
     flex: 1;
+    
 `;
 
 // VIEW
@@ -40,21 +41,77 @@ export const HandleButtonText = styled.Text`
 `;
 
 export const ImageProfile = styled.Image`
-    width: 280px;
-    height: 280px;
-    border-radius: 200px;
-    margin-bottom: 40px;
+    width: 52px;
+    height: 52px;
+    border-radius: 52px;
 `;
 
-export const Title = styled.Text`
-    font-size: 40px;
-    margin-top: 20px;
-    font-weight: bold;
+export const LevelImgView = styled.View`
+    align-items: center;
 `;
 
-export const SimpleText = styled.Text`
+export const LevelText = styled.Text`
+    font-size: 13px;
+    text-align: center;
+`;
+
+export const ViewTitleInput = styled.View`
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    background-color: #fff;
+    border-width: 1px;
+    border-color: #fff1;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+`;
+
+export const InputTitle = styled.TextInput`
+    width: 100%;
+    border-start-start-radius: 8px;
+    background-color: #fff;
     font-size: 20px;
-    margin-top: 20px;
+    font-weight: bold;
+    flex: 1;
+    padding-left: 10px;
+    margin-left: 5px;
+    margin-bottom: 10px;
 `;
+
+export const ViewTextInput = styled.View`
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    background-color: #fff;
+    border-width: 1px;
+    border-color: #fff1;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+`;
+
+export const InputText = styled.TextInput`
+    width: 100%;
+    border-radius: 8px;
+    background-color: #fff;
+    /* border-color: blue;
+    border-top-width: 1px; */
+    flex: 1;
+    padding-left: 10px;
+    margin-bottom: 10px;
+`;
+
+export const ScrollViewSignUp = styled.ScrollView`
+    width: 100%;
+    height: 100%;
+    flex: 1;
+    padding: 20px;
+    
+`;
+
+
+// KeyboardAvoidingView
+
 
 

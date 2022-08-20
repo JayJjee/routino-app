@@ -15,7 +15,6 @@ const FlatlistView = styled.TouchableOpacity`
 const ViewArea = styled.View`
   width: 100px;
   height: 100%;
-  margin-top: 20px;
   padding: 20px;
   flex: 1;
   align-items: center;
