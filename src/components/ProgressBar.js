@@ -2,16 +2,6 @@ import React from "react";
 import styled from 'styled-components/native';
 import { LinearGradient } from "expo-linear-gradient";
 
-const HeaderArea = styled.View`
-    flex: 1;
-    height: 100px;
-    background-color: #fff;
-    justify-content: center;
-    align-items: center;
-    /* border-color: black;
-    border-width: 0.2px; */
-`;
-
 export default () => {
 
     return (
@@ -23,7 +13,8 @@ export default () => {
                 flex: 1,
                 height: 25,
                 borderRadius: 20,
-                margin: 10,
+                marginLeft: 10,
+                marginRight: 10,
             }}
         >
         </LinearGradient>

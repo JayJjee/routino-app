@@ -9,18 +9,18 @@ export const Container = styled.SafeAreaView`
 // VIEW
 
 export const TopArea = styled.View`
-    height: 100px;
+    flex: 0.5;
     width: 100%;
     justify-content: center;
     align-items: center;
     flex-direction: row;
-    padding: 20px;
-    margin-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
     background-color: #fff;
 `;
 
 export const TraitsArea = styled.View`
-    height: 180px;
+    flex: 1;
     width: 100%;
     margin-bottom: 10px;
     background-color: #EAEAEA;
@@ -60,6 +60,7 @@ export const HandleButtonText = styled.Text`
 export const ImageProfile = styled.Image`
     width: 88px;
     height: 88px;
+    aspect-ratio: 1;
     border-radius: 88px;
 `;
 

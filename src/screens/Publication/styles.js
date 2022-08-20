@@ -4,7 +4,6 @@ import styled from 'styled-components/native';
 export const Container = styled.SafeAreaView`
     background-color: #EAEAEA;
     flex: 1;
-    
 `;
 
 // VIEW
@@ -12,6 +11,7 @@ export const Container = styled.SafeAreaView`
 export const ViewArea = styled.View`
     flex: 1;
     align-items: center;
+    justify-content: center;
 `;
 
 export const HeaderArea = styled.View`
@@ -23,7 +23,7 @@ export const HeaderArea = styled.View`
     border-color: black;
     border-width: 0.2px;
       
-`
+`;
 
 export const HandleButton = styled.TouchableOpacity`
     background-color: #8C8C8C;
@@ -48,6 +48,10 @@ export const ImageProfile = styled.Image`
 
 export const LevelImgView = styled.View`
     align-items: center;
+    /* position: absolute;
+    top: -20px;
+    left: -10px;
+    z-index: 1; */
 `;
 
 export const LevelText = styled.Text`
@@ -102,12 +106,24 @@ export const InputText = styled.TextInput`
     margin-bottom: 10px;
 `;
 
+export const ViewPostInput = styled.View`
+    width: 90%;
+    height: 50px;
+    border-radius: 8px;
+    margin-top: 20px;
+    background-color: #ADADAD;
+    border-width: 1px;
+    border-color: #fff1;
+    flex-direction: row;
+    align-items: center;
+    
+`;
+
 export const ScrollViewSignUp = styled.ScrollView`
     width: 100%;
     height: 100%;
     flex: 1;
-    padding: 20px;
-    
+    padding: 20px;    
 `;
 
 

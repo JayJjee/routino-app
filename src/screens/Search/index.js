@@ -11,16 +11,6 @@ export default () => {
     // const [data, setData] = useState([]); 
 
     const navigation = useNavigation();
-
-    const handleSignOut = () => {
-        auth
-            .signOut()
-            .then(() => {
-                navigation.navigate("SignIn")
-                console.log('Deslogado');
-            })
-            .catch(error => alert(error.message))
-    }
     
     const data = "daniloas"
     const renderItem = ({ item }) => <Item item={item} />;
@@ -30,8 +20,8 @@ export default () => {
             <Header></Header>
             <Title>Browse</Title>
             <ViewArea>
-                <SearchButton onPress={() => handleSignOut()}>
-                    <HandleButtonText>Sign Out</HandleButtonText>
+                <SearchButton>
+                    
                 </SearchButton>
             </ViewArea>
             <FlatList

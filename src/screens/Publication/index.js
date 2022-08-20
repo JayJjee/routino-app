@@ -1,8 +1,25 @@
 import React, { useEffect, useState } from "react";
-import { Container, ScrollViewSignUp, ImageProfile, ViewTitleInput, LevelImgView, LevelText, ViewTextInput, InputTitle, InputText } from "./styles";
+import {
+    Container,
+    ScrollViewSignUp,
+    ImageProfile,
+    ViewTitleInput,
+    LevelImgView,
+    LevelText,
+    ViewTextInput,
+    InputTitle,
+    InputText,
+    ViewPostInput,
+    ViewArea
+} from "./styles";
 import { useNavigation } from "@react-navigation/native";
 import { auth } from "../../../firebase";
 import Header from "../../components/HeaderRoutino";
+import CircleAdd from "../../components/ButtonRequest/CircleAdd";
+import TextAdd from "../../components/ButtonRequest/TextAdd";
+import PictureAdd from "../../components/ButtonRequest/PictureAdd";
+import DropboxAdd from "../../components/ButtonRequest/DropboxAdd";
+
 
 export default () => {
 
@@ -11,7 +28,17 @@ export default () => {
     const [post, setPost] = useState()
     const [inputHeightTitle, setInputHeightTitle] = useState(0)
     const [inputHeightText, setInputHeightText] = useState(0)
+    const [loading, setLoading] = useState(false)
     const level = 30
+
+    const handleButtonPress = () => {
+        console.log("Clicou");
+        setLoading(true)
+        setTimeout(function () {
+            setLoading(false)
+
+        }, 2000);
+    }
 
     return (
         <Container>
@@ -43,6 +70,28 @@ export default () => {
                     />
 
                 </ViewTextInput>
+                <ViewArea>
+                    <CircleAdd
+                        isLoading={loading}
+                        onPress={() => handleButtonPress()}
+                    />
+                    <ViewPostInput>
+                        <TextAdd
+                        // isLoading={loading}
+                        // onPress={() => handleButtonPress()}
+                        />
+                        <PictureAdd
+                        // isLoading={loading}
+                        // onPress={() => handleButtonPress()}
+                        />
+                        <DropboxAdd
+                        // isLoading={loading}
+                        // onPress={() => handleButtonPress()}
+                        />
+                    </ViewPostInput>
+                </ViewArea>
+
+
             </ScrollViewSignUp>
 
 
