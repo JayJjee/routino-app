@@ -22,12 +22,13 @@ export const TopArea = styled.View`
 export const TraitsArea = styled.View`
     height: 180px;
     width: 100%;
+    margin-bottom: 10px;
     background-color: #EAEAEA;
 `;
 
 export const ArticlesArea = styled.View`
     flex: 1;
-    margin-top: 20px;
+    /* margin-top: 20px; */
     margin-bottom: 10px;
     align-items: center;
     justify-content: center;
@@ -81,9 +82,6 @@ export const SimpleText = styled.Text`
     margin-top: 20px;
 `;
 
-export const ScrollViewProfile = styled.ScrollView`
-    width: 100%;
-    flex: 1;
-`;
+
 
 

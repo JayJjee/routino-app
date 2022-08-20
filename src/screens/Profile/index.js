@@ -14,8 +14,8 @@ export default () => {
 
     const navigation = useNavigation();
 
-    const traits = ["musica", "esporte", "programacao"]
-    const article = ["danilo", "marcus", "joan"]
+    const traits = ["musica", "esporte", "programacao","musica", "esporte", "programacao"]
+    const article = ["danilo", "marcus", "joan", "danilo", "marcus", "joan"]
     const renderItemTraits = ({ item }) => <ItemTraits item={item} />;
     const renderItemArticle = ({ item }) => <ItemArticle item={item} />;
     const renderEmpty = () => <ItemEmpty />;
@@ -31,19 +31,17 @@ export default () => {
                 <ImageProfile source={require("../../assets/profile.png")} />
                 <ProgressBar></ProgressBar>
             </TopArea>
-            <ScrollViewProfile >
-                <TraitsArea>
-                    <TitleText>YOUR TRAITS</TitleText>
-                    <FlatList
-                        data={traits}
-                        renderItem={renderItemTraits}
-                        horizontal
-                        ListEmptyComponent={renderEmpty}
-                        contentContainerStyle={{ justifyContent: "center" }}
-                    // numColumns={numColumns}
-                    />
-                </TraitsArea>
-            </ScrollViewProfile>
+            <TraitsArea>
+                <TitleText>YOUR TRAITS</TitleText>
+                <FlatList
+                    data={traits}
+                    renderItem={renderItemTraits}
+                    horizontal
+                    ListEmptyComponent={renderEmpty}
+                    contentContainerStyle={{ justifyContent: "center" }}
+                // numColumns={numColumns}
+                />
+            </TraitsArea>
             <ArticlesArea>
                 <TitleText>YOUR ARTICLES</TitleText>
                 <FlatList
