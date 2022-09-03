@@ -13,12 +13,13 @@ import {
     ViewArea
 } from "./styles";
 import { useNavigation } from "@react-navigation/native";
-import { auth } from "../../../firebase";
+import { auth, db } from "../../../firebase";
 import Header from "../../components/HeaderRoutino";
 import CircleAdd from "../../components/ButtonRequest/CircleAdd";
 import TextAdd from "../../components/ButtonRequest/TextAdd";
 import PictureAdd from "../../components/ButtonRequest/PictureAdd";
 import DropboxAdd from "../../components/ButtonRequest/DropboxAdd";
+import { addDoc, collection } from "firebase/firestore";
 
 
 export default () => {
@@ -32,7 +33,31 @@ export default () => {
     const level = 30
 
     const handleButtonPress = () => {
-        console.log("Clicou");
+        const coll = collection(db, "Artigo");
+        const docData = {
+            "Titulo": title,
+            "Texto": post,
+            "Lingua": "PT-BR",
+            "Campo": "Undefined",
+            "Views": 0,
+            "Upvote":0,
+            "Downvote":0,
+            "Usuario": auth.name
+        }
+        addDoc(coll, docData)
+        .then(()=>{
+            alert("Artigo publicado com sucesso!");
+        })
+        .catch((error)=>{
+            alert("Erro ao publicar o artigo");
+            console.log(error.message)
+        })
+        
+    }
+
+    const finishArticleButton = () => {
+
+
         setLoading(true)
         setTimeout(function () {
             setLoading(false)

@@ -36,7 +36,6 @@ export default ({ item }) => {
 
     <ButtonArea>
         <ButtonText>{item.Titulo}</ButtonText>
-        {console.log(item)}
         <StatusBarH></StatusBarH>
     </ButtonArea>
 
