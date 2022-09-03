@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components/native";
 import { useNavigation } from "@react-navigation/native";
+import { collection, doc, setDoc, addDoc } from "firebase/firestore";
+import { auth, db} from "../../../firebase";
 
 const ButtonArea = styled.TouchableOpacity`
     width: 100%;
@@ -27,11 +29,14 @@ const StatusBarH = styled.View`
 `;
 
 export default ({ item }) => {
+
+  
   const navigation = useNavigation();
   return (
 
     <ButtonArea>
-        <ButtonText>{item}</ButtonText>
+        <ButtonText>{item.Titulo}</ButtonText>
+        {console.log(item)}
         <StatusBarH></StatusBarH>
     </ButtonArea>
 

@@ -12,17 +12,21 @@ import {
     ImageSearch,
 } from "./styles";
 import { useNavigation } from "@react-navigation/native";
-import { auth } from "../../../firebase";
+import { auth, db} from "../../../firebase";
 import Header from "../../components/HeaderRoutino";
 import ProgressBar from "../../components/ProgressBar";
 import ItemTraits from "./ItemTraits";
 import ItemArticle from "./ItemMostViewed";
 import ItemEmpty from "./ItemEmpty";
 import SearchButton from "../../components/SearchButton";
+import { onSnapshot, collection, query, orderBy, limit } from "firebase/firestore"
+
+
 
 export default () => {
 
     const navigation = useNavigation();
+    const [artigos, setArtigos] = useState([]);
 
     const traits = ["musica", "esporte", "programacao", "musica", "esporte", "programacao"]
     const article = ["danilo", "marcus", "joan", "danilo", "marcus", "joan"]
@@ -34,6 +38,18 @@ export default () => {
         navigation.navigate("Search")
     }
 
+    useEffect(()=>{
+        const list = [];
+        const coll = collection(db, "Artigo");
+        const q = query(coll, orderBy("Views"), limit(10));
+        onSnapshot(q, (querySnapshot)=>{
+            querySnapshot.forEach((doc)=>{
+                list.push({...doc.data(), id: doc.id})
+            })
+            setArtigos(list);
+        } )
+    }, [])
+
     return (
         <Container>
             <Header></Header>
@@ -42,7 +58,7 @@ export default () => {
                 <Title>Most viewed today</Title>
                 <FlatList
                     nestedScrollEnabled
-                    data={article}
+                    data={artigos}
                     // refreshing={true}
                     renderItem={renderItemArticle}
                     ListEmptyComponent={renderEmpty}
