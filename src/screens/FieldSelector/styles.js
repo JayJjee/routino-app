@@ -25,6 +25,20 @@ export const HeaderArea = styled.View`
     border-width: 0.2px;
       
 `
+export const ViewPostInput = styled.TouchableOpacity`
+    width: 90%;
+    height: 50px;
+    border-radius: 8px;
+    margin: 20px;
+    margin-top: -10px;
+    background-color: #ADADAD;
+    border-width: 1px;
+    border-color: #fff1;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    
+`;
 
 export const HandleButton = styled.TouchableOpacity`
     background-color: #8C8C8C;
@@ -58,8 +72,9 @@ export const ImageProfile = styled.Image`
 
 // TEXT
 export const HandleButtonText = styled.Text`
-    font-size: 16px;
+    font-size: 20px;
     text-align: center;
+    font-weight: bold;
 
 `;
 

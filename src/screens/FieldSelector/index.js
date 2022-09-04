@@ -1,30 +1,38 @@
 import React, { useEffect, useState } from "react";
-import { Container, ViewArea, Title, FlatList, HorizontalList } from "./styles";
+import { Container, ViewArea, Title, FlatList, HorizontalList, ViewPostInput, HandleButtonText } from "./styles";
 import { useNavigation } from "@react-navigation/native";
-import { auth } from "../../../firebase";
+import { auth, db } from "../../../firebase";
 import Header from "../../components/HeaderRoutino";
 import SearchButton from "../../components/SearchButton";
 import ItemTraits from "./ItemTraits";
 import ItemEmpty from "../../components/ItemEmpty";
 import SelectedTraits from "./SelectedTraits";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { addDoc, collection, doc } from "firebase/firestore";
 
-export default () => {
-
+export default (object) => {
+    auth
     const [fields, setFields] = useState([]);
     const [selectedTraits, setSelectedTraits] = useState(["ei", "ei"]);
-
-    // useEffect(()=>{
-    //     const list = [];
-    //     const coll = collection(db, "Campos");
-    //     const q = query(coll, orderBy("Views"), limit(10));
-    //     onSnapshot(q, (querySnapshot)=>{
-    //         querySnapshot.forEach((doc)=>{
-    //             list.push({...doc.data(), id: doc.id})
-    //         })
-    //         setArtigos(list);
-    //     } )
-    // }, [])
+    const [loading, setLoading] = useState(false)
+    const docData = object.route.params.docData
+    
+    const handleButtonPress = async () => {
+        const coll = collection(db, "Artigo");
+        setLoading(true)
+        docData.Campo = selectedTraits
+        console.log(docData); 
+        addDoc(coll, docData)
+            .then(() => {
+                setLoading(false)
+                alert("Artigo publicado com sucesso");
+                navigation.navigate("MainTab")
+            })
+            .catch((error) => {
+                alert("Erro ao publicar o artigo");
+                console.log(error.message)
+            })
+    }
 
     const selectTrait = (item) => {
         setSelectedTraits([...selectedTraits, "ei"]);
@@ -56,7 +64,6 @@ export default () => {
     const renderSelectedraits = ({ item }) =>
         <  SelectedTraits item={item} removeOnPress={(item) => removeTrait(item)} />;
 
-    const renderEmpty = () => <ItemEmpty />;
     const traits = ["musica", "esporte", "programacao", "musica", "esporte", "programacao"]
 
     const data = "daniloas"
@@ -85,7 +92,9 @@ export default () => {
                 numColumns={numColumns}
             />
 
-
+            <ViewPostInput onPress={(handleButtonPress)}>
+                <HandleButtonText>Publicar o artigo</HandleButtonText>
+            </ViewPostInput>
 
         </Container>
     );

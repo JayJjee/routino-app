@@ -23,6 +23,7 @@ export default () => (
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="MainTab" component={MainTab} />
         <Stack.Screen name="FieldSelector" component={FieldSelector} />
+
     </Stack.Navigator>
 )
 

@@ -19,7 +19,7 @@ import CircleAdd from "../../components/ButtonRequest/CircleAdd";
 import TextAdd from "../../components/ButtonRequest/TextAdd";
 import PictureAdd from "../../components/ButtonRequest/PictureAdd";
 import DropboxAdd from "../../components/ButtonRequest/DropboxAdd";
-import { addDoc, collection } from "firebase/firestore";
+
 
 
 export default () => {
@@ -33,37 +33,24 @@ export default () => {
     const level = 30
 
     const handleButtonPress = () => {
-        const coll = collection(db, "Artigo");
         const docData = {
             "Titulo": title,
             "Texto": post,
             "Lingua": "PT-BR",
             "Campo": "Undefined",
             "Views": 0,
-            "Upvote":0,
-            "Downvote":0,
+            "Upvote": 0,
+            "Downvote": 0,
             "IdUsuario": auth.currentUser.uid,
             "Usuario": auth.currentUser.email
         }
-        addDoc(coll, docData)
-        .then(()=>{
-            alert("Artigo publicado com sucesso!");
+        navigation.navigate("FieldSelector", {
+            docData: docData
         })
-        .catch((error)=>{
-            alert("Erro ao publicar o artigo");
-            console.log(error.message)
-        })
-        
     }
 
-    const finishArticleButton = () => {
+    const handleFieldsButton = () => {
 
-
-        setLoading(true)
-        setTimeout(function () {
-            setLoading(false)
-
-        }, 2000);
     }
 
     return (
