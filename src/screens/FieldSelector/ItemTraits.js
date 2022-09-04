@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components/native";
 import { useNavigation } from "@react-navigation/native";
-import { AntDesign } from '@expo/vector-icons'; 
+import { AntDesign } from '@expo/vector-icons';
 import { StyleSheet } from 'react-native';
-import {images} from '../../assets/fields/images.js';
+import images from '../../assets/fields/images.js';
+import checkboxes from './teste.js';
 import { Container } from "./styles";
 
 const FlatlistView = styled.View`
@@ -56,20 +57,22 @@ const ThemeIcon = styled.Image`
 
 
 export default ({ item }) => {
-  const obj = images();
-  console.log(obj);
+
   const navigation = useNavigation();
+  images.map(item => console.log("Checkbox atual: ", item.name));
+  const idName = item.nome
+
   return (
 
     <ViewArea>
       <FlatlistView>
-        {/* {!!item.fotoPet && <ImagePet source={{ uri: item.fotoPet }} />} */}
+        {!!item && <ThemeIcon source={item.key} />}
         {/* {images[item.nome] != undefined ? <ThemeIcon source={images[item.nome]} /> : <Container></Container>} */}
 
       </FlatlistView>
       <TextArea>
 
-        <TextParam>{item.nome}</TextParam>
+        <TextParam>{idName}</TextParam>
         <StatusBar></StatusBar>
       </TextArea>
     </ViewArea>
