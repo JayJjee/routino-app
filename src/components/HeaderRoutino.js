@@ -37,6 +37,7 @@ export default () => {
 
     const handleHome = () => {
         navigation.navigate("Home")
+        navigation.navigate("MainTab")
     }
     return (
         <HeaderArea onPress={() => handleHome()}>

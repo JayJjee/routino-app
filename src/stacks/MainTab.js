@@ -17,7 +17,7 @@ export default () => {
     return (
         <Tab.Navigator
             tabBar={props=><CustomTabBar {...props}/>}
-            initialRouteName="Publication"
+            initialRouteName="Home"
             screenOptions={{
                 headerShown: false,
                 unmountOnBlur: true,
@@ -28,6 +28,7 @@ export default () => {
             <Tab.Screen name="Search" component={Search} />
             <Tab.Screen name="Publication" component={Publication} />
             <Tab.Screen name="Home" component={Home} />
+            {/* <Tab.Screen name="FieldSelector" component={FieldSelector} /> */}
             <Tab.Screen name="ShowPublication" component={ShowPublication} />
         </Tab.Navigator>)
 

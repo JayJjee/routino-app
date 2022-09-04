@@ -1,16 +1,21 @@
 import React from "react";
 import styled from "styled-components/native";
 import { useNavigation } from "@react-navigation/native";
-import { AntDesign } from '@expo/vector-icons'; 
-import { StyleSheet } from 'react-native';
+import { AntDesign } from '@expo/vector-icons';
+import { StyleSheet, View } from 'react-native';
 import images from '../../assets/fields/images.js';
 
-const FlatlistView = styled.TouchableOpacity`
-  margin-top: 10px;
+const ViewArea = styled.View`
   width: 100px;
-  height: 60px;
+  height: 100px;
+  margin-left: 20px;
+  align-items: center;
+`;
+
+const FlatlistView = styled.TouchableOpacity`
+  height: 100px;
+  width: 100%;
   border-radius: 100px;
-  flex: 1;
   flex-direction: row;
   align-items: center;
 `;
@@ -22,48 +27,50 @@ const CloseButton = styled.TouchableOpacity`
   justify-content: flex-end;
 `;
 
-const ViewArea = styled.View`
-  width: 100px;
-  height: 100%;
-  flex: 1;
-  align-items: center;
-  margin-left: 50px;
-`;
-
-const StatusBar = styled.TouchableOpacity`
-  height: 10px;
-  width: 80px;
-  border-radius: 20px;
-  background-color: #56C3CA;
-`;
-
 const TextArea = styled.View`
+  margin-top: 10px;
   flex: 1;
+  background-color: red;
+`;
+
+const StatusBar = styled.View`
+
 `;
 
 const TextParam = styled.Text`
-  font-size: 16px;
-  margin-top: 20px;
+  font-size: 14px;
   text-align: center;
 `;
 
 const ThemeIcon = styled.Image`
   height: 100px;
   width: 100px;
-  flex: 1;
+  margin-bottom: 10px;
   aspect-ratio: 1;
 `;
 
+const StatusBarStyle = (cor) => {
+  console.log(">>>>>>>>>>>>", cor);
+  return StyleSheet.create({
+    statusBar: {
+      height: 10,
+      width: 80,
+      borderRadius: 20,
+      backgroundColor: cor
+    }
+  })
+}
 
-export default ({item, removeOnPress}) => {
+export default ({ item, removeOnPress }) => {
   const navigation = useNavigation();
   const idName = item.nome
+  const statusStyle = StatusBarStyle(item.cor);
 
   return (
 
     <ViewArea>
       <CloseButton onPress={removeOnPress}>
-        <AntDesign name="closecircle" size={25} color="gray"/>
+        <AntDesign name="closecircle" size={25} color="gray" />
       </CloseButton>
       <FlatlistView onPress={removeOnPress}>
         {/* {!!item.fotoPet && <ImagePet source={{ uri: item.fotoPet }} />} */}
@@ -72,7 +79,7 @@ export default ({item, removeOnPress}) => {
       </FlatlistView>
       <TextArea>
         <TextParam>{item.nome}</TextParam>
-        <StatusBar></StatusBar>
+        <StatusBar style={statusStyle.statusBar}></StatusBar>
       </TextArea>
     </ViewArea>
   );

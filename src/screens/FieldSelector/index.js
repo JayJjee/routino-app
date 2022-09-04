@@ -13,7 +13,7 @@ import { addDoc, onSnapshot, collection, query, limit, doc } from "firebase/fire
 export default (object) => {
     auth
     const [fields, setFields] = useState([]);
-    const [selectedTraits, setSelectedTraits] = useState([{nome:"arte",cor:"asdas"}]);
+    const [selectedTraits, setSelectedTraits] = useState([]);
     const [traits, setTraits] = useState([]); 
     const [loading, setLoading] = useState(false)
     const docData = object.route.params.docData
@@ -55,7 +55,7 @@ export default (object) => {
     const renderItemTraits = ( {item} ) => <ItemTraits item={item} addOnPress={() => selectTrait(item)}/>   ;
     const renderSelectedraits = ({ item }) => <SelectedTraits item={item} removeOnPress={() => removeTrait(item)} />;
     
-    const numColumns = 2
+    const numColumns = 3
 
     useEffect(()=>{
         const list = [];

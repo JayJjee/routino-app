@@ -10,31 +10,16 @@ const FlatlistView = styled.View`
   width: 100px;
   height: 100px;
   border-radius: 100px;
-  flex: 1;
   flex-direction: row;
   align-items: center;
-
-`;
-
-const CloseButton = styled.View`
-  width: 20px;
-  height: 20px;
 `;
 
 const ViewArea = styled.TouchableOpacity`
   width: 100px;
   height: 100%;
   padding: 20px;
-  margin-left: 20px;
   flex: 1;
   align-items: center;
-`;
-
-const StatusBar = styled.View`
-  height: 10px;
-  width: 80px;
-  border-radius: 20px;
-  background-color: #56C3CA;
 `;
 
 const TextArea = styled.View`
@@ -42,7 +27,7 @@ const TextArea = styled.View`
 `;
 
 const TextParam = styled.Text`
-  font-size: 16px;
+  font-size: 14px;
   margin-top: 5px;
   text-align: center;
 `;
@@ -54,12 +39,28 @@ const ThemeIcon = styled.Image`
   aspect-ratio: 1;
 `;
 
+const StatusBar = styled.View`
+
+`;
+
+const StatusBarStyle = (cor) => {
+  console.log(">>>>>>>>>>>>", cor);
+  return StyleSheet.create({
+    statusBar: {
+      height: 10,
+      width: 80,
+      borderRadius: 20,
+      backgroundColor: cor
+    }
+  })
+}
+
 
 export default ({ item, addOnPress }) => {
 
   const navigation = useNavigation();
   const idName = item.nome
-  console.log(images[idName]);
+  const statusStyle = StatusBarStyle(item.cor);
 
   return (
 
@@ -72,7 +73,7 @@ export default ({ item, addOnPress }) => {
       <TextArea>
 
         <TextParam>{idName}</TextParam>
-        <StatusBar></StatusBar>
+        <StatusBar style={statusStyle.statusBar}></StatusBar>
       </TextArea>
     </ViewArea>
   );

@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components/native";
 import { useNavigation } from "@react-navigation/native";
+import { StyleSheet } from 'react-native';
+import images from '../../assets/fields/images.js';
 
 const FlatlistView = styled.TouchableOpacity`
   width: 100px;
@@ -20,20 +22,12 @@ const ViewArea = styled.View`
   align-items: center;
 `;
 
-const StatusBar = styled.TouchableOpacity`
-  height: 10px;
-  width: 80px;
-  border-radius: 20px;
-  background-color: #56C3CA;
-  margin-bottom: 20px;
-`;
-
 const TextArea = styled.View`
   flex: 1;
 `;
 
 const TextParam = styled.Text`
-  font-size: 16px;
+  font-size: 14px;
   margin-top: 5px;
   text-align: center;
 `;
@@ -45,19 +39,37 @@ const ThemeIcon = styled.Image`
   aspect-ratio: 1;
 `;
 
+const StatusBar = styled.View`
+
+`;
+
+const StatusBarStyle = (cor) => {
+  console.log(">>>>>>>>>>>>", cor);
+  return StyleSheet.create({
+    statusBar: {
+      height: 10,
+      width: 80,
+      borderRadius: 20,
+      backgroundColor: cor
+    }
+  })
+}
+
 export default ({ item }) => {
   const navigation = useNavigation();
+  const statusStyle = StatusBarStyle(item.cor);
+  const idName = item.nome
   return (
 
     <ViewArea>
       <FlatlistView>
         {/* {!!item.fotoPet && <ImagePet source={{ uri: item.fotoPet }} />} */}
-        <ThemeIcon source={require('../../assets/binary-code.png')} />
+        {!!item && <ThemeIcon source={images[idName]} />}
 
       </FlatlistView>
       <TextArea>
-        <TextParam>Name</TextParam>
-        <StatusBar></StatusBar>
+        <TextParam>{item.nome}</TextParam>
+        <StatusBar style={statusStyle.statusBar}></StatusBar>
       </TextArea>
     </ViewArea>
 
