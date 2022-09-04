@@ -29,7 +29,6 @@ const ViewArea = styled.View`
   flex: 1;
   align-items: center;
   margin-left: 50px;
-  background-color: red;
 `;
 
 const StatusBar = styled.TouchableOpacity`

@@ -4,7 +4,6 @@ import { useNavigation } from "@react-navigation/native";
 import { AntDesign } from '@expo/vector-icons';
 import { StyleSheet } from 'react-native';
 import images from '../../assets/fields/images.js';
-import checkboxes from './teste.js';
 import { Container } from "./styles";
 
 const FlatlistView = styled.View`
@@ -59,14 +58,14 @@ const ThemeIcon = styled.Image`
 export default ({ item }) => {
 
   const navigation = useNavigation();
-  images.map(item => console.log("Checkbox atual: ", item.name));
   const idName = item.nome
+  console.log(images[idName]);
 
   return (
 
     <ViewArea>
       <FlatlistView>
-        {!!item && <ThemeIcon source={item.key} />}
+        {!!item && <ThemeIcon source={images[idName]} />}
         {/* {images[item.nome] != undefined ? <ThemeIcon source={images[item.nome]} /> : <Container></Container>} */}
 
       </FlatlistView>

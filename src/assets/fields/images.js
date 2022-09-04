@@ -2,7 +2,7 @@ const Images = {
     arte: require('./arte.png'),
     ciclismo: require('./ciclismo.png'),
     confeitaria: require('./confeitaria.png'),
-    diy: "aawsdfasdf",
+    DIY: require('./DIY.png'),
     escultura: require('./escultura.png'),
     football: require('./football.png'),
     fotografia: require('./fotografia.png'),
@@ -28,6 +28,6 @@ const checkboxes = [
     }
 ];
 
-export default checkboxes;
+export default Images;
 
 // "VR": require('../../assets/fields/VR.png'),
