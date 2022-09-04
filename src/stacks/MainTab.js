@@ -8,6 +8,7 @@ import Search from "../screens/Search";
 import Profile from "../screens/Profile";
 import Publication from "../screens/Publication";
 import Settings from "../screens/Settings/index.js";
+import FieldSelector from "../screens/FieldSelector/index.js";
 
 const Tab = createBottomTabNavigator();
 
@@ -24,7 +25,7 @@ export default () => {
             <Tab.Screen name="Profile" component={Profile} />
             <Tab.Screen name="Settings" component={Settings} />
             <Tab.Screen name="Search" component={Search} />
-            <Tab.Screen name="Publication" component={Publication} />
+            <Tab.Screen name="Publication" component={FieldSelector} />
             <Tab.Screen name="Home" component={Home} />
         </Tab.Navigator>)
 
