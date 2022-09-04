@@ -3,6 +3,8 @@ import styled from "styled-components/native";
 import { useNavigation } from "@react-navigation/native";
 import { AntDesign } from '@expo/vector-icons'; 
 import { StyleSheet } from 'react-native';
+import {images} from '../../assets/fields/images.js';
+import { Container } from "./styles";
 
 const FlatlistView = styled.View`
   width: 100px;
@@ -54,17 +56,20 @@ const ThemeIcon = styled.Image`
 
 
 export default ({ item }) => {
+  const obj = images();
+  console.log(obj);
   const navigation = useNavigation();
   return (
 
     <ViewArea>
       <FlatlistView>
         {/* {!!item.fotoPet && <ImagePet source={{ uri: item.fotoPet }} />} */}
-        <ThemeIcon source={require('../../assets/binary-code.png')} />
+        {/* {images[item.nome] != undefined ? <ThemeIcon source={images[item.nome]} /> : <Container></Container>} */}
 
       </FlatlistView>
       <TextArea>
-        <TextParam>Name</TextParam>
+
+        <TextParam>{item.nome}</TextParam>
         <StatusBar></StatusBar>
       </TextArea>
     </ViewArea>

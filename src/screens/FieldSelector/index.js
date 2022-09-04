@@ -1,30 +1,31 @@
 import React, { useEffect, useState } from "react";
 import { Container, ViewArea, Title, FlatList, HorizontalList} from "./styles";
 import { useNavigation } from "@react-navigation/native";
-import { auth } from "../../../firebase";
+import { auth, db} from "../../../firebase";
 import Header from "../../components/HeaderRoutino";
 import SearchButton from "../../components/SearchButton";
 import ItemTraits from "./ItemTraits";
 import ItemEmpty from "../../components/ItemEmpty";
 import SelectedTraits from "./SelectedTraits";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { onSnapshot, collection, query, limit } from "firebase/firestore"
 
 export default () => {
 
-    const [fields, setFields] = useState([]); 
+    const [traits, setTraits] = useState([]); 
     const [selectedTraits, setSelectedTraits] = useState(["ei","ei"]); 
 
-    // useEffect(()=>{
-    //     const list = [];
-    //     const coll = collection(db, "Campos");
-    //     const q = query(coll, orderBy("Views"), limit(10));
-    //     onSnapshot(q, (querySnapshot)=>{
-    //         querySnapshot.forEach((doc)=>{
-    //             list.push({...doc.data(), id: doc.id})
-    //         })
-    //         setArtigos(list);
-    //     } )
-    // }, [])
+    useEffect(()=>{
+        const list = [];
+        const coll = collection(db, "Traits");
+        const q = query(coll, limit(24));
+        onSnapshot(q, (querySnapshot)=>{
+            querySnapshot.forEach((doc)=>{
+                list.push({...doc.data(), nome: doc.id})
+            })
+            setTraits(list);
+        } )
+    }, [])
 
     const selectTrait = (item) => {
         setSelectedTraits([...selectedTraits,"ei"]);
@@ -57,9 +58,8 @@ export default () => {
                 <  SelectedTraits item={item} removeOnPress={(item)=>removeTrait(item)}/>;
 
     const renderEmpty = () => <ItemEmpty />;
-    const traits = ["musica", "esporte", "programacao", "musica", "esporte", "programacao"]
     
-    const data = "daniloas"
+
     
     const numColumns = 3
     return (
