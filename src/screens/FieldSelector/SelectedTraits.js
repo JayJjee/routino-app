@@ -12,6 +12,7 @@ const FlatlistView = styled.TouchableOpacity`
   flex: 1;
   flex-direction: row;
   align-items: center;
+  
 
 `;
 
@@ -25,9 +26,10 @@ const CloseButton = styled.TouchableOpacity`
 const ViewArea = styled.View`
   width: 100px;
   height: 100%;
-  margin-left: 20px;
   flex: 1;
   align-items: center;
+  margin-left: 50px;
+  background-color: red;
 `;
 
 const StatusBar = styled.TouchableOpacity`
@@ -61,13 +63,12 @@ export default ({item, removeOnPress}) => {
   return (
 
     <ViewArea>
-      <CloseButton onPress={removeOnPress()}>
+      <CloseButton >
         <AntDesign name="closecircle" size={25} color="gray"/>
       </CloseButton>
-      <FlatlistView>
+      <FlatlistView onPress={removeOnPress}>
         {/* {!!item.fotoPet && <ImagePet source={{ uri: item.fotoPet }} />} */}
         <ThemeIcon source={require('../../assets/binary-code.png')} />
-
       </FlatlistView>
       <TextArea>
         <TextParam>Name</TextParam>

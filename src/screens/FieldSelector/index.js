@@ -35,9 +35,10 @@ export default () => {
     }
 
     const removeTrait = (item) => {
-        const index = selectedTraits.indexOf(item);
+        const index = selectedTraits.indexOf("ei");
         if (index > -1) { 
-            array.splice(index, 1); 
+            selectedTraits.splice(index, 1); 
+            console.log("enttrou");
             setSelectedTraits([...selectedTraits]);
         }
         
@@ -74,7 +75,7 @@ export default () => {
                     data={selectedTraits}
                     renderItem={renderSelectedraits}
                     horizontal
-                    contentContainerStyle={{ justifyContent: "center"}}
+                    contentContainerStyle={{ justifyContent: "space-between"}}
                     // numColumns={numColumns}
                     />
             <FlatList
