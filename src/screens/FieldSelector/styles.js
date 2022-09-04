@@ -45,7 +45,7 @@ export const FlatList = styled.FlatList`
 
 export const HorizontalList = styled.FlatList`
     width: 100%;
-    height: 300;
+    height: 300px;
     background-color: #CCCCCC;
 `;
 

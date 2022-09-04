@@ -30,14 +30,21 @@ const StatusBarH = styled.View`
 
 export default ({ item }) => {
 
-  
   const navigation = useNavigation();
+ 
+  const goTo = (item) => {
+    navigation.navigate("ShowPublication", {
+      article: item,
+    });
+  }
+
   return (
 
-    <ButtonArea>
+    <ButtonArea onPress={() => goTo(item)}>
         <ButtonText>{item.Titulo}</ButtonText>
         <StatusBarH></StatusBarH>
     </ButtonArea>
 
   );
 };
+ 

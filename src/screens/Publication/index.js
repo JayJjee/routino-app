@@ -25,8 +25,8 @@ import { addDoc, collection } from "firebase/firestore";
 export default () => {
 
     const navigation = useNavigation();
-    const [title, setTitle] = useState()
-    const [post, setPost] = useState()
+    const [title, setTitle] = useState("")
+    const [post, setPost] = useState("")
     const [inputHeightTitle, setInputHeightTitle] = useState(0)
     const [inputHeightText, setInputHeightText] = useState(0)
     const [loading, setLoading] = useState(false)
@@ -42,7 +42,8 @@ export default () => {
             "Views": 0,
             "Upvote":0,
             "Downvote":0,
-            "Usuario": auth.name
+            "IdUsuario": auth.currentUser.uid,
+            "Usuario": auth.currentUser.email
         }
         addDoc(coll, docData)
         .then(()=>{

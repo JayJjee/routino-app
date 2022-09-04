@@ -6,6 +6,8 @@ import SignUp from "../screens/SignUp";
 import Home from "../screens/Home";
 import MainTab from "../stacks/MainTab"
 import FieldSelector from "../screens/FieldSelector";
+import ShowPublication from "../screens/ShowPublication";
+
 
 const Stack = createStackNavigator();
 
