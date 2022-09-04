@@ -3,6 +3,7 @@ import styled from "styled-components/native";
 import { useNavigation } from "@react-navigation/native";
 import { AntDesign } from '@expo/vector-icons'; 
 import { StyleSheet } from 'react-native';
+import images from '../../assets/fields/images.js';
 
 const FlatlistView = styled.TouchableOpacity`
   margin-top: 10px;
@@ -12,8 +13,6 @@ const FlatlistView = styled.TouchableOpacity`
   flex: 1;
   flex-direction: row;
   align-items: center;
-  
-
 `;
 
 const CloseButton = styled.TouchableOpacity`
@@ -57,20 +56,22 @@ const ThemeIcon = styled.Image`
 
 
 export default ({item, removeOnPress}) => {
-  
   const navigation = useNavigation();
+  const idName = item.nome
+
   return (
 
     <ViewArea>
-      <CloseButton >
+      <CloseButton onPress={removeOnPress}>
         <AntDesign name="closecircle" size={25} color="gray"/>
       </CloseButton>
       <FlatlistView onPress={removeOnPress}>
         {/* {!!item.fotoPet && <ImagePet source={{ uri: item.fotoPet }} />} */}
-        <ThemeIcon source={require('../../assets/binary-code.png')} />
+        {!!item && <ThemeIcon source={images[idName]} />}
+        {/* <ThemeIcon source={require('../../assets/binary-code.png')} /> */}
       </FlatlistView>
       <TextArea>
-        <TextParam>Name</TextParam>
+        <TextParam>{item.nome}</TextParam>
         <StatusBar></StatusBar>
       </TextArea>
     </ViewArea>

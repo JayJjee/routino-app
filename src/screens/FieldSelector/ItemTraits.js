@@ -21,7 +21,7 @@ const CloseButton = styled.View`
   height: 20px;
 `;
 
-const ViewArea = styled.View`
+const ViewArea = styled.TouchableOpacity`
   width: 100px;
   height: 100%;
   padding: 20px;
@@ -55,7 +55,7 @@ const ThemeIcon = styled.Image`
 `;
 
 
-export default ({ item }) => {
+export default ({ item, addOnPress }) => {
 
   const navigation = useNavigation();
   const idName = item.nome
@@ -63,7 +63,7 @@ export default ({ item }) => {
 
   return (
 
-    <ViewArea>
+    <ViewArea onPress={addOnPress}>
       <FlatlistView>
         {!!item && <ThemeIcon source={images[idName]} />}
         {/* {images[item.nome] != undefined ? <ThemeIcon source={images[item.nome]} /> : <Container></Container>} */}

@@ -8,8 +8,8 @@ import Search from "../screens/Search";
 import Profile from "../screens/Profile";
 import Publication from "../screens/Publication";
 import Settings from "../screens/Settings/index.js";
-import FieldSelector from "../screens/FieldSelector/index.js";
-import ShowPublication from "../screens/ShowPublication/index.js";
+import FieldSelector from "../screens/FieldSelector/index";
+import ShowPublication from "../screens/ShowPublication/index";
 
 const Tab = createBottomTabNavigator();
 
@@ -17,7 +17,7 @@ export default () => {
     return (
         <Tab.Navigator
             tabBar={props=><CustomTabBar {...props}/>}
-            initialRouteName="Home"
+            initialRouteName="Publication"
             screenOptions={{
                 headerShown: false,
                 unmountOnBlur: true,

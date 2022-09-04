@@ -13,7 +13,7 @@ import { addDoc, onSnapshot, collection, query, limit, doc } from "firebase/fire
 export default (object) => {
     auth
     const [fields, setFields] = useState([]);
-    const [selectedTraits, setSelectedTraits] = useState(["ei", "ei"]);
+    const [selectedTraits, setSelectedTraits] = useState([{nome:"arte",cor:"asdas"}]);
     const [traits, setTraits] = useState([]); 
     const [loading, setLoading] = useState(false)
     const docData = object.route.params.docData
@@ -36,15 +36,13 @@ export default (object) => {
     }
 
     const selectTrait = (item) => {
-        setSelectedTraits([...selectedTraits, "ei"]);
-        // if(!selectedTraits.includes(item)){
-
-        // }
-        console.log(selectedTraits);
+        if(!selectedTraits.includes(item)){
+            setSelectedTraits([...selectedTraits,item])
+        }
     }
 
     const removeTrait = (item) => {
-        const index = selectedTraits.indexOf("ei");
+        const index = selectedTraits.indexOf(item);
         if (index > -1) {
             selectedTraits.splice(index, 1);
             console.log(selectedTraits);
@@ -54,18 +52,10 @@ export default (object) => {
     }
 
     const navigation = useNavigation();
-    const renderItemTraits = ({ item }) =>
-        <Container>
-            <TouchableOpacity onPress={selectTrait}>
-                <ItemTraits item={item} />
-            </TouchableOpacity>
-        </Container>;
-    ;
-
-    const renderSelectedraits = ({ item }) =>
-        <  SelectedTraits item={item} removeOnPress={(item) => removeTrait(item)} />;
+    const renderItemTraits = ( {item} ) => <ItemTraits item={item} addOnPress={() => selectTrait(item)}/>   ;
+    const renderSelectedraits = ({ item }) => <SelectedTraits item={item} removeOnPress={() => removeTrait(item)} />;
     
-    const numColumns = 3
+    const numColumns = 2
 
     useEffect(()=>{
         const list = [];

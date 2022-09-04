@@ -13,7 +13,7 @@ const Stack = createStackNavigator();
 
 export default () => (
     <Stack.Navigator
-        initialRouteName="MainTab"
+        initialRouteName="SingIn"
         screenOptions={{
             headerShown: false,
         }}
