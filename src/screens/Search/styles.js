@@ -43,6 +43,14 @@ export const FlatList = styled.FlatList`
     height: 80%;
 `;
 
+export const HorizontalList = styled.FlatList`
+    width: 200;
+    height: 70px;
+    border-radius: 30px;
+    margin-left: 15px;
+    background-color: #CCCCCC;
+`;
+
 export const ImageProfile = styled.Image`
     width: 280px;
     height: 280px;

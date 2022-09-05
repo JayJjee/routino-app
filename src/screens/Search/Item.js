@@ -14,7 +14,9 @@ const FlatlistView = styled.TouchableOpacity`
 
 `;
 
-const ViewArea = styled.View`
+
+
+const ViewArea = styled.TouchableOpacity`
   width: 100px;
   height: 100%;
   padding: 20px;
@@ -55,13 +57,13 @@ const StatusBarStyle = (cor) => {
   })
 }
 
-export default ({ item }) => {
+export default ({ item, addOnPress }) => {
   const navigation = useNavigation();
   const statusStyle = StatusBarStyle(item.cor);
   const idName = item.nome
   return (
 
-    <ViewArea>
+    <ViewArea onPress={addOnPress}>
       <FlatlistView>
         {/* {!!item.fotoPet && <ImagePet source={{ uri: item.fotoPet }} />} */}
         {!!item && <ThemeIcon source={images[idName]} />}
