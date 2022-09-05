@@ -13,15 +13,19 @@ export default () => {
     const navigation = useNavigation();
     const [traits, setTraits] = useState([]);
     const [selectedTraits, setSelectedTraits] = useState([{nome:"arte",cor:"#FFFFFF"}]);
+    const [text, setText] = useState("");
 
     const renderItem = ({ item }) => <Item item={item} addOnPress={() => selectTrait(item)}/>;
     const renderSelectedraits = ({ item }) => <SelectedItems item={item} removeOnPress={() => removeTrait(item)} />;
 
     const selectTrait = (item) => {
-        console.log(">>>>>>>Entrei na selecao")
-        console.log(selectedTraits)
         if(!selectedTraits.includes(item)){
-            setSelectedTraits([...selectedTraits, item])
+            if(selectedTraits.length>=3){
+                selectedTraits.pop()
+                setSelectedTraits([item,...selectedTraits]);
+            }else{
+                setSelectedTraits([item,...selectedTraits]);
+            }
         }
     }
 
@@ -46,6 +50,13 @@ export default () => {
             setTraits(list);
         } )
     }, [])
+
+    const handleSearch = ()=> {
+        navigation.navigate("SearchResults", {
+            SelectedTraits: selectedTraits,
+            Text: text
+        })
+    }
     
     const numColumns = 3
     return (
@@ -53,7 +64,7 @@ export default () => {
             <Header></Header>
             <Title>Browse</Title>
             <ViewArea>
-                <SearchButton>
+                <SearchButton placeholder="Digite o titulo do artigo" OnSubmit={()=>handleSearch()} value={text} onChangeText={t=>setText(t)} >
                     
                 </SearchButton>
             </ViewArea>
@@ -63,6 +74,7 @@ export default () => {
                 horizontal
                 // contentContainerStyle={{ marginHorizontal: 10 }}
                 contentContainerStyle={{ justifyContent: "space-between" }}
+                showsHorizontalScrollIndicator={false}
 
             />
             <FlatList

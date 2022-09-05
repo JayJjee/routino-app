@@ -7,6 +7,7 @@ import Home from "../screens/Home";
 import MainTab from "../stacks/MainTab"
 import FieldSelector from "../screens/FieldSelector";
 import ShowPublication from "../screens/ShowPublication";
+import SearchResults from "../screens/SearchResults";
 
 
 const Stack = createStackNavigator();
@@ -23,6 +24,7 @@ export default () => (
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="MainTab" component={MainTab} />
         <Stack.Screen name="FieldSelector" component={FieldSelector} />
+        <Stack.Screen name="SearchResults" component={SearchResults} />
 
     </Stack.Navigator>
 )

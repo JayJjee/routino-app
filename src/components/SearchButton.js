@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { AntDesign } from '@expo/vector-icons';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const InputArea = styled.View`
     width: 80%;
@@ -24,7 +26,7 @@ const Icon = styled.Image`
     height: 20px;
 `;
 
-export default ({ placeholder, value, onChangeText }) => {
+export default ({ placeholder, value, onChangeText, OnSubmit }) => {
     return (
         <InputArea>
             <Icon source={require('../assets/search.png')} />
@@ -32,7 +34,11 @@ export default ({ placeholder, value, onChangeText }) => {
                 placeholder={placeholder}
                 value={value}
                 onChangeText={onChangeText}
+                
             />
+            <TouchableOpacity onPress={OnSubmit}>
+                <AntDesign name="RightCircleOutlined" size={21} color="gray" />
+            </TouchableOpacity>
         </InputArea>
     );
 }
