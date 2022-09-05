@@ -58,13 +58,12 @@ export default (object) => {
     useEffect(()=>{
         const list = [];
         const coll = collection(db, "Artigos");
-        
-        const q = query(coll, limit(24));
+        const q = query(coll, where('Campos', 'array-contains-any', selectedFields));
         onSnapshot(q, (querySnapshot)=>{
             querySnapshot.forEach((doc)=>{
                 list.push({...doc.data(), nome: doc.id})
             })
-            setTraits(list);
+            setArtigos(list);
         } )
     }, [])
 
