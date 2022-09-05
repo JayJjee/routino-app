@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { AntDesign } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { RightCircleOutlined } from '@ant-design/icons'
 
 const InputArea = styled.View`
     width: 80%;

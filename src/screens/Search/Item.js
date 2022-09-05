@@ -4,7 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 import { StyleSheet } from 'react-native';
 import images from '../../assets/fields/images.js';
 
-const FlatlistView = styled.TouchableOpacity`
+const FlatlistView = styled.View`
   width: 100px;
   height: 100px;
   border-radius: 100px;
