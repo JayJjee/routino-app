@@ -8,9 +8,9 @@ import images from '../../assets/fields/images.js';
 const ViewArea = styled.View`
   width: 100px;
   height: 100px;
+  margin-top: 20px;
   margin-left: 20px;
   align-items: center;
-  background-color: red;
 `;
 
 const FlatlistView = styled.TouchableOpacity`
