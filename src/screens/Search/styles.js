@@ -11,8 +11,8 @@ export const Container = styled.SafeAreaView`
 export const ViewArea = styled.View`
     height: 70px;
     padding-left: 20px;
-    padding-top: 5px;
     align-items: center;
+    justify-content: flex-start;
 `;
 
 export const HeaderArea = styled.View`
@@ -44,10 +44,11 @@ export const FlatList = styled.FlatList`
 `;
 
 export const HorizontalList = styled.FlatList`
-    width: 200;
-    height: 70px;
+    width: 250px;
+    height: 90px;
     border-radius: 30px;
     margin-left: 15px;
+    padding-left: 12px;
     background-color: #CCCCCC;
 `;
 

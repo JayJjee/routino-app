@@ -46,7 +46,6 @@ const StatusBar = styled.View`
 `;
 
 const StatusBarStyle = (cor) => {
-  console.log(">>>>>>>>>>>>", cor);
   return StyleSheet.create({
     statusBar: {
       height: 10,

@@ -5,11 +5,36 @@ import { auth, db } from "../../../firebase";
 import Header from "../../components/HeaderRoutino";
 import SearchButton from "../../components/SearchButton";
 import Item from "./Item";
-import SelectedItems from "./Item";
+import SelectedItems from "./SelectedItems";
 import { onSnapshot, collection, query, limit } from "firebase/firestore"
 
 export default () => {
 
+    const navigation = useNavigation();
+    const [traits, setTraits] = useState([]);
+    const [selectedTraits, setSelectedTraits] = useState([{nome:"arte",cor:"#FFFFFF"}]);
+
+    const renderItem = ({ item }) => <Item item={item} addOnPress={() => selectTrait(item)}/>;
+    const renderSelectedraits = ({ item }) => <SelectedItems item={item} removeOnPress={() => removeTrait(item)} />;
+
+    const selectTrait = (item) => {
+        console.log(">>>>>>>Entrei na selecao")
+        console.log(selectedTraits)
+        if(!selectedTraits.includes(item)){
+            setSelectedTraits([...selectedTraits, item])
+        }
+    }
+
+    const removeTrait = (item) => {
+        console.log(">>>>>>>nasdas")
+        const index = selectedTraits.indexOf(item);
+        if (index > -1) {
+            selectedTraits.splice(index, 1);
+            console.log(selectedTraits);
+            setSelectedTraits([...selectedTraits]);
+        }
+    }
+    
     useEffect(()=>{
         const list = [];
         const coll = collection(db, "Traits");
@@ -21,31 +46,6 @@ export default () => {
             setTraits(list);
         } )
     }, [])
-
-    const navigation = useNavigation();
-    const [traits, setTraits] = useState([]);
-    const [selectedTraits, setSelectedTraits] = useState([{nome:"arte", cor:"#FFFFFF"}]);
-
-    const renderItem = ({ item }) => <Item item={item} addOnPress={() => selectTrait(item)}/>;
-    const renderSelectedraits = ({ item }) => <SelectedItems item={item} removeOnPress={() => removeTrait(item)} />;
-
-
-    const selectTrait = (item) => {
-        if(!selectedTraits.includes(item)){
-            setSelectedTraits([...selectedTraits,item])
-        }
-    }
-
-    const removeTrait = (item) => {
-        const index = selectedTraits.indexOf(item);
-        if (index > -1) {
-            selectedTraits.splice(index, 1);
-            console.log(selectedTraits);
-            setSelectedTraits([...selectedTraits]);
-        }
-
-    }
-    
     
     const numColumns = 3
     return (
@@ -61,7 +61,9 @@ export default () => {
                 data={selectedTraits}
                 renderItem={renderSelectedraits}
                 horizontal
+                // contentContainerStyle={{ marginHorizontal: 10 }}
                 contentContainerStyle={{ justifyContent: "space-between" }}
+
             />
             <FlatList
                 data={traits}
