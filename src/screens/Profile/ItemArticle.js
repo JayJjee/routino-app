@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components/native";
 import { useNavigation } from "@react-navigation/native";
+
 
 const ButtonArea = styled.TouchableOpacity`
     width: 100%;
@@ -28,11 +29,12 @@ const StatusBarH = styled.View`
 
 export default ({ item }) => {
   const navigation = useNavigation();
+
   return (
 
     <ButtonArea>
-        <ButtonText>{item}</ButtonText>
-        <StatusBarH></StatusBarH>
+      <ButtonText>{item}</ButtonText>
+      <StatusBarH></StatusBarH>
     </ButtonArea>
 
   );

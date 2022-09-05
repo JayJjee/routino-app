@@ -13,31 +13,31 @@ import {
     ViewArea
 } from "./styles";
 import { useNavigation } from "@react-navigation/native";
+import { doc, updateDoc } from "firebase/firestore";
 import { auth, db } from "../../../firebase";
 import Header from "../../components/HeaderRoutino";
-import { doc, getDoc } from "firebase/firestore";
 
 export default (object) => {
-
+    auth
     const navigation = useNavigation();
     const level = 30
     const title = object.route.params.article.Titulo
     const text = object.route.params.article.Texto
-    const idWriter = object.route.params.article.IdUsuario
+    const idArticle = object.route.params.article.id
+    let Views = object.route.params.article.Views
 
-    const getUser = async () => {
-        const docRef = doc(db, "users", idWriter);
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-            console.log("Document data:", docSnap.data());
-        } else {
-            // doc.data() will be undefined in this case
-            console.log("No such document!");
-        }
+
+    const updateView = async () => {
+        const article = doc(db, "Artigo", idArticle);
+
+        Views += 1
+        await updateDoc(article, {
+            Views: Views
+        });
     }
 
     useEffect(() => {
-        getUser();
+        updateView();
     }, []);
 
     return (

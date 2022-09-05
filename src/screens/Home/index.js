@@ -23,8 +23,6 @@ import ItemEmpty from "./ItemEmpty";
 import SearchButton from "../../components/SearchButton";
 import { onSnapshot, collection, query, orderBy, limit } from "firebase/firestore"
 
-
-
 export default () => {
 
     auth
@@ -45,7 +43,7 @@ export default () => {
         setLoading(true)
         const listArticle = [];
         const coll = collection(db, "Artigo");
-        const q = query(coll, orderBy("Views"), limit(10));
+        const q = query(coll, orderBy("Views", "desc"), limit(10));
         onSnapshot(q, (querySnapshot) => {
             querySnapshot.forEach((doc) => {
                 listArticle.push({ ...doc.data(), id: doc.id })
