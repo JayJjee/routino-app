@@ -13,8 +13,8 @@ const ViewArea = styled.View`
 `;
 
 const FlatlistView = styled.TouchableOpacity`
-  height: 100px;
-  width: 100%;
+  height: 90px;
+  width: 100px;
   border-radius: 100px;
   flex-direction: row;
   align-items: center;
@@ -28,9 +28,11 @@ const CloseButton = styled.TouchableOpacity`
 `;
 
 const TextArea = styled.View`
-  margin-top: 10px;
-  flex: 1;
-  background-color: red;
+  width: 100px;
+  height: 100px;
+  margin-top: 5px;
+  align-items: center;
+  /* justify-content: center; */
 `;
 
 const StatusBar = styled.View`

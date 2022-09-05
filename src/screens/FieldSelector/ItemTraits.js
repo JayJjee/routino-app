@@ -24,6 +24,7 @@ const ViewArea = styled.TouchableOpacity`
 
 const TextArea = styled.View`
   flex: 1;
+  align-items: center;
 `;
 
 const TextParam = styled.Text`
