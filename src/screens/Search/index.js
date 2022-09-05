@@ -12,7 +12,7 @@ export default () => {
 
     const navigation = useNavigation();
     const [traits, setTraits] = useState([]);
-    const [selectedTraits, setSelectedTraits] = useState([{nome:"arte",cor:"#FFFFFF"}]);
+    const [selectedTraits, setSelectedTraits] = useState([]);
     const [text, setText] = useState("");
 
     const renderItem = ({ item }) => <Item item={item} addOnPress={() => selectTrait(item)}/>;

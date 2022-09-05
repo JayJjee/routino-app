@@ -59,15 +59,25 @@ export default (object) => {
         const list = [];
         const coll = collection(db, "Artigo");
 
-        const q = query(coll, where('Campo', 'array-contains-any', selectedFields), where('Titulo', '>=', searchText))
-        onSnapshot(q, (querySnapshot)=>{
-            querySnapshot.forEach((doc)=>{
-                list.push({...doc.data(), nome: doc.id})
-            })
-            setArtigos(list);
-        } )
+        if(selectedFields.length === 0){
+            const q = query(coll, where('Titulo', '>=', searchText), where('Titulo', '<=', (searchText+ '\uf8ff')))
+            onSnapshot(q, (querySnapshot)=>{
+                querySnapshot.forEach((doc)=>{
+                    list.push({...doc.data(), nome: doc.id})
+                })
+                setArtigos(list);
+            } )
 
-        
+        }else{
+            const q = query(coll, where('Campo', 'array-contains-any', selectedFields), where('Titulo', '>=', searchText), where('Titulo', '<=', (searchText+ '\uf8ff')))
+            onSnapshot(q, (querySnapshot)=>{
+                querySnapshot.forEach((doc)=>{
+                    list.push({...doc.data(), nome: doc.id})
+                })
+                setArtigos(list);
+            } )
+
+        }
     }, [])
 
     return (
