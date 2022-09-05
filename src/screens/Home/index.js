@@ -10,6 +10,8 @@ import {
     ArticlesArea,
     GoToSearch,
     ImageSearch,
+    IconLoading,
+    AllView
 } from "./styles";
 import { useNavigation } from "@react-navigation/native";
 import { auth, db } from "../../../firebase";
@@ -29,6 +31,7 @@ export default () => {
     const navigation = useNavigation();
     const [artigos, setArtigos] = useState([]);
     const [traits, setTraits] = useState([]);
+    const [loading, setLoading] = useState(false)
 
     const renderItemTraits = ({ item }) => <ItemTraits item={item} />;
     const renderItemArticle = ({ item }) => <ItemArticle item={item} />;
@@ -39,14 +42,16 @@ export default () => {
     }
 
     useEffect(() => {
+        setLoading(true)
         const listArticle = [];
         const coll = collection(db, "Artigo");
         const q = query(coll, orderBy("Views"), limit(10));
         onSnapshot(q, (querySnapshot) => {
             querySnapshot.forEach((doc) => {
-                list.push({ ...doc.data(), id: doc.id })
+                listArticle.push({ ...doc.data(), id: doc.id })
             })
             setArtigos(listArticle);
+            
         })
 
         const list = [];
@@ -57,48 +62,54 @@ export default () => {
                 list.push({ ...doc.data(), nome: doc.id })
             })
             setTraits(list);
+            setLoading(false)
         })
     }, [])
 
     return (
         <Container>
             <Header></Header>
+            {loading ? (<IconLoading size="large" color="black" />) :
+                <AllView>
+                    <ArticlesArea>
+                        <Title>Most viewed today</Title>
+                        <FlatList
+                            nestedScrollEnabled
+                            data={artigos}
+                            // refreshing={true}
+                            renderItem={renderItemArticle}
+                            ListEmptyComponent={renderEmpty}
+                            contentContainerStyle={{ marginHorizontal: 30 }}
 
-            <ArticlesArea>
-                <Title>Most viewed today</Title>
-                <FlatList
-                    nestedScrollEnabled
-                    data={artigos}
-                    // refreshing={true}
-                    renderItem={renderItemArticle}
-                    ListEmptyComponent={renderEmpty}
-                    contentContainerStyle={{ marginHorizontal: 30 }}
-                // ListHeaderComponent
-                />
-            </ArticlesArea>
+                        />
+                    </ArticlesArea>
 
-            <ScrollViewHome>
-                <TraitsArea>
-                    <TitleIconView>
-                        <TitleText>Browse</TitleText>
+                    <ScrollViewHome>
+                        <TraitsArea>
+                            <TitleIconView>
+                                <TitleText>Browse</TitleText>
 
-                        <GoToSearch onPress={() => handleSearchClick()}>
-                            <ImageSearch source={require("../../assets/squares.png")} />
-                        </GoToSearch>
+                                <GoToSearch onPress={() => handleSearchClick()}>
+                                    <ImageSearch source={require("../../assets/squares.png")} />
+                                </GoToSearch>
 
-                    </TitleIconView>
+                            </TitleIconView>
 
-                    <FlatList
-                        data={traits}
-                        renderItem={renderItemTraits}
-                        horizontal
-                        contentContainerStyle={{ justifyContent: "space-between" }}
-                        // contentContainerStyle={{ justifyContent: "center" 
-                    />
-                    <SearchButton >
-                    </SearchButton>
-                </TraitsArea>
-            </ScrollViewHome>
+                            <FlatList
+                                data={traits}
+                                renderItem={renderItemTraits}
+                                horizontal
+                                contentContainerStyle={{ justifyContent: "space-between" }}
+                                ListEmptyComponent={renderEmpty}
+                            />
+                            <SearchButton >
+                            </SearchButton>
+                        </TraitsArea>
+                    </ScrollViewHome>
+                </AllView>
+
+            }
+
         </Container>
     );
 };

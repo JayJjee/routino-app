@@ -107,6 +107,14 @@ export const SimpleText = styled.Text`
     margin-top: 20px;
 `;
 
+export const IconLoading = styled.ActivityIndicator`
+`;
+
+export const AllView = styled.View`
+    flex: 1;
+`;
+
+
 
 
 
