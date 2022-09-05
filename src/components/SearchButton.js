@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { AntDesign } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { RightCircleOutlined } from '@ant-design/icons'
 
 const InputArea = styled.View`
     width: 80%;
@@ -26,6 +27,12 @@ const Icon = styled.Image`
     height: 20px;
 `;
 
+const IconRight = styled.Image`
+    width: 25px;
+    height: 25px;
+    margin-right: 20px;
+`;
+
 export default ({ placeholder, value, onChangeText, OnSubmit }) => {
     return (
         <InputArea>
@@ -37,7 +44,8 @@ export default ({ placeholder, value, onChangeText, OnSubmit }) => {
                 
             />
             <TouchableOpacity onPress={OnSubmit}>
-                <AntDesign name="RightCircleOutlined" size={21} color="gray" />
+                {/* <AntDesign name="<RightCircleOutlined />" size={21} color="gray" /> */}
+                <IconRight source={require('../assets/arrow-right.png')} />
             </TouchableOpacity>
         </InputArea>
     );

@@ -54,6 +54,28 @@ export const LevelImgView = styled.View`
     z-index: 1; */
 `;
 
+export const AvaluationArea = styled.View`
+    flex: 1;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+`;
+
+export const ButtonAvaluation = styled.TouchableOpacity`
+    flex: 1;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+`;
+
+export const IconAvaluation = styled.Image`
+    width: 40px;
+    height: 40px;
+`;
+
 export const LevelText = styled.Text`
     font-size: 13px;
     text-align: center;
