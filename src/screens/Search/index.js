@@ -8,6 +8,8 @@ import Item from "./Item";
 import { onSnapshot, collection, query, limit } from "firebase/firestore"
 
 export default () => {
+    auth
+    const [traits, setTraits] = useState([]);
 
     useEffect(()=>{
         const list = [];
@@ -20,9 +22,6 @@ export default () => {
             setTraits(list);
         } )
     }, [])
-
-    const navigation = useNavigation();
-    const [traits, setTraits] = useState([]);
     
     const renderItem = ({ item }) => <Item item={item} />;
     const numColumns = 3

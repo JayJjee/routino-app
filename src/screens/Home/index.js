@@ -12,7 +12,7 @@ import {
     ImageSearch,
 } from "./styles";
 import { useNavigation } from "@react-navigation/native";
-import { auth, db} from "../../../firebase";
+import { auth, db } from "../../../firebase";
 import Header from "../../components/HeaderRoutino";
 import ProgressBar from "../../components/ProgressBar";
 import ItemTraits from "./ItemTraits";
@@ -25,11 +25,11 @@ import { onSnapshot, collection, query, orderBy, limit } from "firebase/firestor
 
 export default () => {
 
+    auth
     const navigation = useNavigation();
     const [artigos, setArtigos] = useState([]);
+    const [traits, setTraits] = useState([]);
 
-    const traits = ["musica", "esporte", "programacao", "musica", "esporte", "programacao"]
-    const article = ["danilo", "marcus", "joan", "danilo", "marcus", "joan"]
     const renderItemTraits = ({ item }) => <ItemTraits item={item} />;
     const renderItemArticle = ({ item }) => <ItemArticle item={item} />;
     const renderEmpty = () => <ItemEmpty />;
@@ -38,16 +38,26 @@ export default () => {
         navigation.navigate("Search")
     }
 
-    useEffect(()=>{
-        const list = [];
+    useEffect(() => {
+        const listArticle = [];
         const coll = collection(db, "Artigo");
         const q = query(coll, orderBy("Views"), limit(10));
-        onSnapshot(q, (querySnapshot)=>{
-            querySnapshot.forEach((doc)=>{
-                list.push({...doc.data(), id: doc.id})
+        onSnapshot(q, (querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                list.push({ ...doc.data(), id: doc.id })
             })
-            setArtigos(list);
-        } )
+            setArtigos(listArticle);
+        })
+
+        const list = [];
+        const collTraits = collection(db, "Traits");
+        const qTraits = query(collTraits, limit(24));
+        onSnapshot(qTraits, (querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                list.push({ ...doc.data(), nome: doc.id })
+            })
+            setTraits(list);
+        })
     }, [])
 
     return (
@@ -82,9 +92,8 @@ export default () => {
                         data={traits}
                         renderItem={renderItemTraits}
                         horizontal
-                        ListEmptyComponent={renderEmpty}
-                        contentContainerStyle={{ justifyContent: "center" }}
-                    // numColumns={numColumns}
+                        contentContainerStyle={{ justifyContent: "space-between" }}
+                        // contentContainerStyle={{ justifyContent: "center" 
                     />
                     <SearchButton >
                     </SearchButton>
