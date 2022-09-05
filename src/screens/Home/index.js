@@ -23,8 +23,6 @@ import ItemEmpty from "./ItemEmpty";
 import SearchButton from "../../components/SearchButton";
 import { onSnapshot, collection, query, orderBy, limit } from "firebase/firestore"
 
-
-
 export default () => {
 
     auth
