@@ -3,12 +3,12 @@ import { Container, ViewArea, Title, FlatList, HorizontalList, ViewPostInput, Ha
 import { useNavigation } from "@react-navigation/native";
 import { auth, db} from "../../../firebase";
 import Header from "../../components/HeaderRoutino";
-import SearchButton from "../../components/SearchButton";
+import SearchButton from "./SearchButton";
 import ItemTraits from "./ItemTraits";
 import ItemEmpty from "./ItemEmpty";
 import SelectedTraits from "./SelectedTraits";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { addDoc, onSnapshot, collection, query, limit, doc } from "firebase/firestore"
+import { addDoc, onSnapshot, collection, query, limit, doc, where } from "firebase/firestore"
 import ItemArticle from "../Home/ItemMostViewed";
 import styled from 'styled-components/native';
 
@@ -57,14 +57,17 @@ export default (object) => {
 
     useEffect(()=>{
         const list = [];
-        const coll = collection(db, "Artigos");
-        const q = query(coll, where('Campos', 'array-contains-any', selectedFields));
+        const coll = collection(db, "Artigo");
+
+        const q = query(coll, where('Campo', 'array-contains-any', selectedFields), where('Titulo', '>=', searchText))
         onSnapshot(q, (querySnapshot)=>{
             querySnapshot.forEach((doc)=>{
                 list.push({...doc.data(), nome: doc.id})
             })
             setArtigos(list);
         } )
+
+        
     }, [])
 
     return (
@@ -72,7 +75,7 @@ export default (object) => {
             <Header></Header>
             <Title>Browse</Title>
             <ViewArea>
-                <SearchButton>
+                <SearchButton placeholder={searchText}>
 
                 </SearchButton>
             </ViewArea>
